@@ -19,14 +19,6 @@ services:
     depends_on:
       - database
 
-  # database:
-  #   image: postgres
-  #   ports: 
-  #     - "5432"
-  #   environment:
-  #     - POSTGRES_DB=$DATABASE_NAME
-  #     - POSTGRES_USER=$DATABASE_USER
-  #     - POSTGRES_PASSWORD=$DATABASE_PASSWORD
   database:
     container_name: database
     image: postgres:latest
