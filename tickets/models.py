@@ -49,9 +49,8 @@ class TicketPassing(models.Model):
     passed_at = models.DateTimeField()
 
     def __str__(self):
-        return "{} {} - {} [{}]".format(
-            self.author.first_name,
-            self.author.last_name,
+        return "{} - {} [{}]".format(
+            self.author.username,
             self.ticket.name,
             self.passed_at
         )
@@ -85,8 +84,7 @@ class TicketComment(models.Model):
     message = models.CharField(max_length=500)
 
     def __str__(self):
-        return "{} {} - {}".format(
-            self.author.first_name,
-            self.author.last_name,
+        return "{} - {}".format(
+            self.author.username,
             self.created_at
         )
