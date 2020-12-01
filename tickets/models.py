@@ -22,6 +22,7 @@ class Question(models.Model):
     question_text = models.CharField(max_length=255)
     correct_answer = models.ForeignKey("tickets.Answer",
                                        on_delete=models.SET_NULL,
+                                       related_name='+',
                                        null=True, blank=True)
 
     def __str__(self):
@@ -40,8 +41,8 @@ class Answer(models.Model):
 
 class TicketPassing(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE,
-                             related_name="passed_tickets")
+                               on_delete=models.CASCADE,
+                               related_name="passed_tickets")
     ticket = models.ForeignKey("tickets.Ticket",
                                on_delete=models.CASCADE,
                                related_name="passed_tickets")
@@ -62,7 +63,8 @@ class TicketPassingAnswer(models.Model):
                                        related_name="answers")
 
     answer = models.ForeignKey("tickets.Answer",
-                               on_delete=models.SET_NULL)
+                               on_delete=models.SET_NULL,
+                               null=True)
 
     def __str__(self):
         return "{}: {}".format(
