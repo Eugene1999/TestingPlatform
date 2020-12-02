@@ -1,29 +1,41 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 
-from .forms import LoginForm
+from .forms import RegisterForm, LoginForm
+
+from .models import User
+
+
+def user_register(request):
+    if request.method == 'POST':
+        if User.objects.filter(username=request.POST['username']):
+            return render(request, 'signup.html', {'existed_username': request.POST['username']})
+
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('/')
+    return render(request, 'signup.html')
 
 
 def user_login(request):
     invalid_login = False
     if request.method == 'POST':
-        print("2", flush=True)
         form = LoginForm(request.POST)
         if form.is_valid():
-            print("3", flush=True)
             cd = form.cleaned_data
             user = authenticate(username=cd['username'], password=cd['password'])
             if user is not None:
                 if user.is_active:
-                    print("4", flush=True)
                     login(request, user)
                     return redirect('/')
-                else:
-                    return HttpResponse('Disabled account')
             else:
                 invalid_login = True
-    else:
-        form = LoginForm()
     return render(request, 'signin.html', {'invalid_login': invalid_login})
 
 def user_logout(request):

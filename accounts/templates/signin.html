@@ -3,7 +3,7 @@
 {% block base %}
 <div class="card">
   <article class="card-body">
-    <a href="/auth/signup/" class="float-right btn btn-outline-primary">Sign up</a>
+    <a href="/register/" class="float-right btn btn-outline-primary">Sign up</a>
     <h4 class="card-title mb-4 mt-1">Sign in</h4>
     <p>
       <a href="" class="btn btn-dark"> <i class="fab fa-github-f"></i>Login via github</a>
@@ -13,11 +13,11 @@
       {% csrf_token %}
       <input type="hidden" name="next" value="{{ next }}">
       <div class="form-group">
-        <label>nickname</label>
-        <input name="username" class="form-control" placeholder="nickname" type="text" required="true">
+        <label>Username</label>
+        <input name="username" class="form-control" placeholder="username" type="text" required="true">
       </div> <!-- form-group// -->
       <div class="form-group">
-        <label>password</label>
+        <label>Password</label>
         <input name="password" class="form-control" placeholder="******" type="password" required="true">
       </div> <!-- form-group// -->
       <div class="row">

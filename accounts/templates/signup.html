@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block base %}
+<div class="card">
+  <article class="card-body">
+    <a href="/login/" class="float-right btn btn-outline-primary">Sign in</a>
+    <h4 class="card-title mb-4 mt-1">Sign up</h4>
+    <p>
+      <a href="" class="btn btn-dark"> <i class="fab fa-github-f"></i>Sign up via github</a>
+    </p>
+    <hr>
+    <form method="post"
+      oninput='password2.setCustomValidity(password2.value != password.value ? "Passwords do not match." : "")'>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
+
+      <div class="form-group">
+        {% if existed_username %}
+        <div class="alert alert-warning" role="alert">
+          User with username "{{ existed_username }}" already exist!
+        </div>
+        {% endif %}
+        <label>Username</label>
+        <input name="username" class="form-control" placeholder="username" type="text" required="true">
+      </div> <!-- form-group// -->
+      <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" placeholder="******" type="password" name="password" required="true">
+      </div> <!-- form-group// -->
+      <div class="form-group">
+        <label>Confirm password</label>
+        <input class="form-control" placeholder="******" type="password" name="password2" required="true">
+      </div> <!-- form-group// -->
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block"> Sign up </button>
+          </div> <!-- form-group// -->
+        </div>
+      </div> <!-- .row// -->
+    </form>
+  </article>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+  .card {
+    width: 400px;
+    margin: 0 auto;
+    float: none;
+    margin-top: 120px;
+  }
+</style>
+{% endblock %}
