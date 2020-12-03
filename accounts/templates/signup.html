@@ -6,7 +6,7 @@
     <a href="/login/" class="float-right btn btn-outline-primary">Sign in</a>
     <h4 class="card-title mb-4 mt-1">Sign up</h4>
     <p>
-      <a href="" class="btn btn-dark"> <i class="fab fa-github-f"></i>Sign up via github</a>
+      <a href="{% url 'social:begin' 'github' %}" class="btn btn-dark"> <i class="fab fa-github-f"></i>Sign up via github</a>
     </p>
     <hr>
     <form method="post"

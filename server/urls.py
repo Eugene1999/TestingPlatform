@@ -24,6 +24,8 @@ urlpatterns = [
     path('register/', accounts_views.user_register, name='register'),
     path('login/', accounts_views.user_login, name='login'),
     path('logout/', accounts_views.user_logout, name='logout'),
+    path('oauth/', include('social_django.urls', namespace='social')),
+    
     path('', include('tickets.urls')),
     # path('account/', include('accounts.urls')),
 ]
