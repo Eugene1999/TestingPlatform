@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+    <table class="table" style="margin-top: 50px;">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Passing count</th>
+                <th scope="col">Passing percent</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <th scope="row">{{ ticket.id }}</th>
+                <td>{{ ticket.name }}</td>
+                <td>{{ ticket.passing_count }}</td>
+                <td>{{ ticket.pass_percent }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,270 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+    <form method="post" onsubmit="createTest()" novalidate>
+        {% csrf_token %}
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Ticket</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="ticket_name" class="form-control" placeholder="Ticket name" type="text"
+                                required="true">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="ticket_description" placeholder="About this test" class="form-control"
+                                rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Create test</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Questions</h2>
+                    </div>
+                    <ul class="list-group list-group-flush" id="questions_list">
+                        <li class="list-group-item" id="hidden_question_cart" hidden="true">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="background-color: rgb(180, 180, 180);">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="question_name" class="form-control"
+                                                        placeholder="Question name" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="correct_answer" class="form-control"
+                                                        placeholder="Correct answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_1" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_2" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_3" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="background-color: rgb(180, 180, 180);">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="question_name" class="form-control"
+                                                        placeholder="Question name" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="correct_answer" class="form-control"
+                                                        placeholder="Correct answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_1" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_2" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_3" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="background-color: rgb(180, 180, 180);">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="question_name" class="form-control"
+                                                        placeholder="Question name" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="correct_answer" class="form-control"
+                                                        placeholder="Correct answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_1" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_2" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_3" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="background-color: rgb(180, 180, 180);">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="question_name" class="form-control"
+                                                        placeholder="Question name" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="correct_answer" class="form-control"
+                                                        placeholder="Correct answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_1" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_2" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_3" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="background-color: rgb(180, 180, 180);">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="question_name" class="form-control"
+                                                        placeholder="Question name" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="correct_answer" class="form-control"
+                                                        placeholder="Correct answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_1" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_2" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_3" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="card">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="background-color: rgb(180, 180, 180);">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="question_name" class="form-control"
+                                                        placeholder="Question name" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="correct_answer" class="form-control"
+                                                        placeholder="Correct answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_1" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_2" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input name="wrong_answer_3" class="form-control"
+                                                        placeholder="Wrong answer" type="text" required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="addQuestion()">Add
+                            question</button>
+                    </div>
+                </div>
+            </div>
+    </form>
+</div>
+
+<style>
+    .card-title {
+        margin-bottom: 0rem;
+    }
+</style>
+
+<script>
+    function addQuestion() {
+        var newQuestion = document.getElementById("hidden_question_cart").cloneNode(deep = true);
+        newQuestion.hidden = false;
+        document.getElementById("questions_list").appendChild(newQuestion);
+    }
+</script>
+{% endblock %}
