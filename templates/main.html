@@ -41,7 +41,7 @@
                         class="rounded-circle" alt="Avatar" height="27" width="27">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
@@ -49,4 +49,7 @@
         </ul>
     </div>
 </nav>
+{% block content %}
+{% endblock %}
+
 {% endblock %}
