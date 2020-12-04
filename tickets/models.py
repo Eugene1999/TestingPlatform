@@ -72,7 +72,7 @@ class TicketPassing(models.Model):
         questions_count = len(Question.objects.filter(
             ticket__passed_tickets=self))
 
-        return (self.correct_answers_count * 100) / questions_count
+        return (self.correct_answers_count * 100) / questions_count if questions_count else 0
 
     def __str__(self):
         return "{} - {} [{}]".format(
