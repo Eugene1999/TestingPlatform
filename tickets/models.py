@@ -9,6 +9,7 @@ class Ticket(models.Model):
                                 related_name="tickets")
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=1000, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     @property
     def passing_count(self):

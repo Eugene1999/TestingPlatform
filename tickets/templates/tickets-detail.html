@@ -13,10 +13,11 @@
                     {% endif %}
                     <p class="card-text">Passing count: {{ ticket.passing_count }}</p>
                     <p class="card-text">Average passing percent: {{ ticket.pass_percent }}%</p>
+                    <a href="{% url 'pass-test' pk=ticket.id %}" class="btn btn-primary">Pass test</a>
                 </div>
                 <div class="col">
                     {% for passing in ticket.passings %}
-                    <div class="card">
+                    <div class="card" style="margin-bottom: 15px;">
                         <div class="card-header">
                             <p class="card-text">Test passed at: {{ passing.passed_at|date:"D d M Y" }}</p>
                         </div>
@@ -25,11 +26,45 @@
                             <p class="card-text">Result: {{ passing.percent_of_passing }}%</p>
                         </div>
                     </div>
-                    {% empty %}
-                    <a href="{% url 'pass-test' pk=ticket.id %}" class="btn btn-primary">Pass test</a>
                     {% endfor %}
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="card" style="margin-top: 25px;">
+        <h5 class="card-header">Comments</h5>
+        <div class="card-body">
+            {% for comment in comments %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="row" style="margin: 20px 0px;">
+                        <div class="col-4">
+                            <p class="card-text">{{ comment.author }}</p>
+                            <p class="card-text">{{ comment.created_at }}</p>
+                        </div>
+                        <div class="col-8">
+                            <div class="card-body">
+                                <p class="card-text">{{ comment.message }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="card-text">No comments</p>
+            {% endfor %}
+        </div>
+        <div class="card-footer">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="author" value="{{ user.id }}">
+                <input type="hidden" name="ticket" value="{{ ticket.id }}">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Message</label>
+                    <input name="message" type="text" class="form-control" id="exampleInputEmail1">
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
         </div>
     </div>
 </div>

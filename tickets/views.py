@@ -2,29 +2,36 @@ from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 
-from .models import Ticket, Question, Answer, TicketPassing
+from .models import Ticket, Question, Answer, TicketPassing, TicketComment
 
-from .forms import TicketForm, TicketPassingForm
+from .forms import TicketForm, TicketPassingForm, TicketCommentForm
 
 
 @login_required
 def index(request):
+    
     tickets = [
         {
             'id': t.id,
             'name': t.name,
             'passing_count': t.passing_count,
             'pass_percent': t.avg_percent_of_passing,
+            'created_at': t.created_at,
+            'passed': len(TicketPassing.objects.filter(ticket=t, author=request.user)) > 0
         }
-        for t in Ticket.objects.all()
+        for t in Ticket.objects.all().order_by('created_at')
     ]
     return render(request, 'tickets-list.html', {'tickets': tickets})
 
 
 def ticket_detail(request, pk):
+    if request.method == 'POST':
+        form = TicketCommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+
     t = get_object_or_404(Ticket, pk=pk)
     passings = TicketPassing.objects.filter(ticket=t, author=request.user.id)
-    print(passings, flush=True)
     ticket = {
         'id': t.id,
         'name': t.name,
@@ -33,7 +40,8 @@ def ticket_detail(request, pk):
         'pass_percent': t.avg_percent_of_passing,
         'passings': passings,
     }
-    return render(request, 'tickets-detail.html', {'ticket': ticket})
+    comments = TicketComment.objects.filter(ticket=t).order_by('created_at')
+    return render(request, 'tickets-detail.html', {'ticket': ticket, 'comments': comments})
 
 
 def create_ticket(request):

@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django import forms
 
 from accounts.models import User
-from tickets.models import Ticket, Question, Answer, TicketPassing, TicketPassingAnswer
+from tickets.models import Ticket, Question, Answer, TicketPassing, TicketPassingAnswer, TicketComment
 
 
 class MultiStringField(forms.Field):
@@ -102,3 +102,9 @@ class TicketPassingForm(forms.Form):
                 ticket_passing=ticket_passing,
                 answer_id=answer
             )
+
+
+class TicketCommentForm(forms.ModelForm):
+    class Meta:
+        model = TicketComment
+        fields = ('author', 'ticket', 'message')
