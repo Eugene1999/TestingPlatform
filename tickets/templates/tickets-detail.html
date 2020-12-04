@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 50px;">
+    <div class="card">
+        <h5 class="card-header">{{ ticket.name }}</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    {% if ticket.description %}
+                    <h5 class="card-title">{{ ticket.description }}</h5>
+                    {% endif %}
+                    <p class="card-text">Passing count: {{ ticket.passing_count }}</p>
+                    <p class="card-text">Average passing percent: {{ ticket.pass_percent }}%</p>
+                </div>
+                <div class="col">
+                    {% for passing in ticket.passings %}
+                    <div class="card">
+                        <div class="card-header">
+                            <p class="card-text">Test passed at: {{ passing.passed_at|date:"D d M Y" }}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Correct answers: {{ passing.correct_answers_count }}</p>
+                            <p class="card-text">Result: {{ passing.percent_of_passing }}%</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <a href="{% url 'pass-test' pk=ticket.id %}" class="btn btn-primary">Pass test</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -20,7 +20,7 @@ class Ticket(models.Model):
         passed_tickets = TicketPassing.objects.filter(ticket=self)
         p = [pt.percent_of_passing for pt in passed_tickets]
         if len(p) > 0:
-            return sum(p) / len(p)
+            return round(sum(p) / len(p), 1)
         else:
             return 100
 
@@ -63,12 +63,16 @@ class TicketPassing(models.Model):
     passed_at = models.DateTimeField()
 
     @property
-    def percent_of_passing(self):
-        questions_count = len(self.ticket.questions)
-        passed_questions_count = len(
-            [True for a in self.answers if a.is_correct_answer])
+    def correct_answers_count(self):
+        answers = TicketPassingAnswer.objects.filter(ticket_passing=self)
+        return len([True for a in answers if a.is_correct_answer])
 
-        return (passed_questions_count * 100) / questions_count
+    @property
+    def percent_of_passing(self):
+        questions_count = len(Question.objects.filter(
+            ticket__passed_tickets=self))
+
+        return (self.correct_answers_count * 100) / questions_count
 
     def __str__(self):
         return "{} - {} [{}]".format(
@@ -90,6 +94,9 @@ class TicketPassingAnswer(models.Model):
     @property
     def is_correct_answer(self):
         return self.answer == self.answer.question.correct_answer
+
+    class Meta:
+        unique_together = ['ticket_passing', 'answer']
 
     def __str__(self):
         return "{}: {}".format(

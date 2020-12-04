@@ -1,10 +1,12 @@
+import datetime
+
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from django import forms
 
 from accounts.models import User
-from tickets.models import Ticket, Question, Answer
+from tickets.models import Ticket, Question, Answer, TicketPassing, TicketPassingAnswer
 
 
 class MultiStringField(forms.Field):
@@ -77,3 +79,26 @@ class TicketForm(forms.Form):
 
             question.correct_answer = correct_answer
             question.save()
+
+
+class TicketPassingForm(forms.Form):
+    user_id = forms.IntegerField()
+    ticket_id = forms.IntegerField()
+    answers = MultiStringField()
+
+    def save(self):
+        user_id = self.cleaned_data.pop('user_id')
+        ticket_id = self.cleaned_data.pop('ticket_id')
+        answers = self.cleaned_data.pop('answers')
+
+        ticket_passing = TicketPassing.objects.create(
+            ticket_id=ticket_id,
+            author_id=user_id,
+            passed_at=datetime.datetime.now()
+        )
+
+        for answer in answers:
+            TicketPassingAnswer.objects.create(
+                ticket_passing=ticket_passing,
+                answer_id=answer
+            )

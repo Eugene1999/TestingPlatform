@@ -16,9 +16,9 @@
             {% for ticket in tickets %}
             <tr>
                 <th scope="row">{{ ticket.id }}</th>
-                <td>{{ ticket.name }}</td>
+                <td><a href="{% url 'ticket-detail' pk=ticket.id %}">{{ ticket.name }}</a></td>
                 <td>{{ ticket.passing_count }}</td>
-                <td>{{ ticket.pass_percent }}</td>
+                <td>{{ ticket.pass_percent }}%</td>
             </tr>
             {% endfor %}
         </tbody>

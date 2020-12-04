@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 50px;">
+    <div class="card main-card" style="width: 28rem;">
+        <h5 class="card-header">{{ ticket.name }}</h5>
+        <div class="card-body">
+            <div class="card">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <input type="hidden" name="ticket_id" value="{{ ticket.id }}">
+
+                    {% for question in ticket.questions %}
+                    <li class="list-group-item">
+                        <input type="hidden" name="question_id" value="{{ question.id }}">
+                        <div class="row">
+                            <div class="col">
+                                {{ question.question_text }}
+                            </div>
+                            <div class="col">
+                                {% for answer in question.answers %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="{{ question.id }}"
+                                        id="exampleRadios2" value="{{ answer.id }}">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        {{ answer.answer_text }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Pass</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-card {
+        width: 400px;
+        margin: 0 auto;
+        float: none;
+        margin-top: 50px;
+    }
+
+    .card-title {
+        margin-bottom: 0rem;
+    }
+</style>
+{% endblock %}
