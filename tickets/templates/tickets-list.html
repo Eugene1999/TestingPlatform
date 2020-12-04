@@ -2,26 +2,94 @@
 
 {% block content %}
 
-<div class="container">
-    <table class="table" style="margin-top: 50px;">
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" checked onclick="viewAllTickets();"> All
+                </label>
+                <label class="btn btn-secondary" onclick="viewTicketsByPassedName('True');">
+                    <input type="radio" name="options" id="option2"> Passed
+                </label>
+                <label class="btn btn-secondary" onclick="viewTicketsByPassedName('False');">
+                    <input type="radio" name="options" id="option2"> Not passed
+                </label>
+            </div>
+        </div>
+        <div class="col">
+            
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Ticket name" id="search_text_input">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" onclick="viewTicketsByName();">Search</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <table class="table">
         <thead>
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Passing count</th>
                 <th scope="col">Passing percent</th>
+                <th scope="col">Created at</th>
+                <th scope="col">Passed</th>
             </tr>
         </thead>
         <tbody>
             {% for ticket in tickets %}
-            <tr>
+            <tr name="table_row">
                 <th scope="row">{{ ticket.id }}</th>
                 <td><a href="{% url 'ticket-detail' pk=ticket.id %}">{{ ticket.name }}</a></td>
                 <td>{{ ticket.passing_count }}</td>
                 <td>{{ ticket.pass_percent }}%</td>
+                <td>{{ ticket.created_at|date }}</td>
+                <td name="passed_td">{{ ticket.passed }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+
+<script>
+    function viewAllTickets() {
+        var rows = document.getElementsByName("table_row");
+
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].removeAttribute("hidden");
+        }
+    }
+    function viewTicketsByPassedName(name) {
+        var rows = document.getElementsByName("table_row");
+
+        for (var i = 0; i < rows.length; i++) {
+            var passed = rows[i].cells[rows[i].cells.length - 1].innerText;
+            if (passed === name) {
+                rows[i].removeAttribute("hidden");
+            } else {
+                rows[i].setAttribute("hidden", true);
+            }
+        }
+    }
+    function viewTicketsByName() {
+        var name = document.getElementById("search_text_input").value.toUpperCase();
+        console.log(name);
+        var rows = document.getElementsByName("table_row");
+
+        for (var i = 0; i < rows.length; i++) {
+            var passed = rows[i].cells[1].innerText.toUpperCase();
+            if (passed.includes(name)) {
+                rows[i].removeAttribute("hidden");
+            } else {
+                rows[i].setAttribute("hidden", true);
+            }
+        }
+    }
+</script>
 {% endblock %}
