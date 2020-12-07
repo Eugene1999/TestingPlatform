@@ -1,27 +1,29 @@
 [
 {
   "model": "tickets.ticket",
-  "pk": 2,
+  "pk": 1,
   "fields": {
-    "creator": 1,
-    "name": "Math questions",
-    "description": ""
+    "creator": 2,
+    "name": "Math",
+    "description": "Simple math questions",
+    "created_at": "2020-12-07T18:58:23.866Z"
   }
 },
 {
   "model": "tickets.ticket",
-  "pk": 3,
+  "pk": 2,
   "fields": {
-    "creator": 1,
+    "creator": 2,
     "name": "Test Ticket",
-    "description": ""
+    "description": "Simple questions to check the correctness of the test.",
+    "created_at": "2020-12-07T19:00:39.567Z"
   }
 },
 {
   "model": "tickets.question",
   "pk": 1,
   "fields": {
-    "ticket": 2,
+    "ticket": 1,
     "question_text": "1 + 1 =",
     "correct_answer": 1
   }
@@ -30,8 +32,8 @@
   "model": "tickets.question",
   "pk": 2,
   "fields": {
-    "ticket": 2,
-    "question_text": "5 * 5 =",
+    "ticket": 1,
+    "question_text": "24 * 12 = ",
     "correct_answer": 5
   }
 },
@@ -39,8 +41,8 @@
   "model": "tickets.question",
   "pk": 3,
   "fields": {
-    "ticket": 2,
-    "question_text": "9 / 3 =",
+    "ticket": 1,
+    "question_text": "156 / 13 =",
     "correct_answer": 9
   }
 },
@@ -48,8 +50,8 @@
   "model": "tickets.question",
   "pk": 4,
   "fields": {
-    "ticket": 2,
-    "question_text": "22 - 18 =",
+    "ticket": 1,
+    "question_text": "176 - 39 =",
     "correct_answer": 13
   }
 },
@@ -57,8 +59,8 @@
   "model": "tickets.question",
   "pk": 5,
   "fields": {
-    "ticket": 2,
-    "question_text": "11 * 11 =",
+    "ticket": 1,
+    "question_text": "325 / 25 =",
     "correct_answer": 17
   }
 },
@@ -66,8 +68,8 @@
   "model": "tickets.question",
   "pk": 6,
   "fields": {
-    "ticket": 3,
-    "question_text": "question 1",
+    "ticket": 1,
+    "question_text": "165 + 17 =",
     "correct_answer": 21
   }
 },
@@ -75,8 +77,8 @@
   "model": "tickets.question",
   "pk": 7,
   "fields": {
-    "ticket": 3,
-    "question_text": "question 2",
+    "ticket": 2,
+    "question_text": "Question 1",
     "correct_answer": 25
   }
 },
@@ -84,8 +86,8 @@
   "model": "tickets.question",
   "pk": 8,
   "fields": {
-    "ticket": 3,
-    "question_text": "question 3",
+    "ticket": 2,
+    "question_text": "Question 2",
     "correct_answer": 29
   }
 },
@@ -93,8 +95,8 @@
   "model": "tickets.question",
   "pk": 9,
   "fields": {
-    "ticket": 3,
-    "question_text": "question 4",
+    "ticket": 2,
+    "question_text": "Question 3",
     "correct_answer": 33
   }
 },
@@ -102,9 +104,18 @@
   "model": "tickets.question",
   "pk": 10,
   "fields": {
-    "ticket": 3,
-    "question_text": "question 5",
+    "ticket": 2,
+    "question_text": "Question 4",
     "correct_answer": 37
+  }
+},
+{
+  "model": "tickets.question",
+  "pk": 11,
+  "fields": {
+    "ticket": 2,
+    "question_text": "Question 5",
+    "correct_answer": 41
   }
 },
 {
@@ -128,7 +139,7 @@
   "pk": 3,
   "fields": {
     "question": 1,
-    "answer_text": "3"
+    "answer_text": "11"
   }
 },
 {
@@ -136,7 +147,7 @@
   "pk": 4,
   "fields": {
     "question": 1,
-    "answer_text": "4"
+    "answer_text": "1"
   }
 },
 {
@@ -144,7 +155,7 @@
   "pk": 5,
   "fields": {
     "question": 2,
-    "answer_text": "25"
+    "answer_text": "288"
   }
 },
 {
@@ -152,7 +163,7 @@
   "pk": 6,
   "fields": {
     "question": 2,
-    "answer_text": "55"
+    "answer_text": "264"
   }
 },
 {
@@ -160,7 +171,7 @@
   "pk": 7,
   "fields": {
     "question": 2,
-    "answer_text": "55555"
+    "answer_text": "312"
   }
 },
 {
@@ -168,7 +179,7 @@
   "pk": 8,
   "fields": {
     "question": 2,
-    "answer_text": "5"
+    "answer_text": "320"
   }
 },
 {
@@ -176,7 +187,7 @@
   "pk": 9,
   "fields": {
     "question": 3,
-    "answer_text": "3"
+    "answer_text": "12"
   }
 },
 {
@@ -184,7 +195,7 @@
   "pk": 10,
   "fields": {
     "question": 3,
-    "answer_text": "93"
+    "answer_text": "22"
   }
 },
 {
@@ -192,7 +203,7 @@
   "pk": 11,
   "fields": {
     "question": 3,
-    "answer_text": "39"
+    "answer_text": "8"
   }
 },
 {
@@ -200,7 +211,7 @@
   "pk": 12,
   "fields": {
     "question": 3,
-    "answer_text": "9"
+    "answer_text": "14,5"
   }
 },
 {
@@ -208,7 +219,7 @@
   "pk": 13,
   "fields": {
     "question": 4,
-    "answer_text": "4"
+    "answer_text": "137"
   }
 },
 {
@@ -216,7 +227,7 @@
   "pk": 14,
   "fields": {
     "question": 4,
-    "answer_text": "6"
+    "answer_text": "127"
   }
 },
 {
@@ -224,7 +235,7 @@
   "pk": 15,
   "fields": {
     "question": 4,
-    "answer_text": "2"
+    "answer_text": "125"
   }
 },
 {
@@ -232,7 +243,7 @@
   "pk": 16,
   "fields": {
     "question": 4,
-    "answer_text": "-4"
+    "answer_text": "142"
   }
 },
 {
@@ -240,7 +251,7 @@
   "pk": 17,
   "fields": {
     "question": 5,
-    "answer_text": "121"
+    "answer_text": "13"
   }
 },
 {
@@ -248,7 +259,7 @@
   "pk": 18,
   "fields": {
     "question": 5,
-    "answer_text": "111"
+    "answer_text": "15"
   }
 },
 {
@@ -256,7 +267,7 @@
   "pk": 19,
   "fields": {
     "question": 5,
-    "answer_text": "1221"
+    "answer_text": "11"
   }
 },
 {
@@ -264,7 +275,7 @@
   "pk": 20,
   "fields": {
     "question": 5,
-    "answer_text": "110"
+    "answer_text": "16"
   }
 },
 {
@@ -272,7 +283,7 @@
   "pk": 21,
   "fields": {
     "question": 6,
-    "answer_text": "correct"
+    "answer_text": "182"
   }
 },
 {
@@ -280,7 +291,7 @@
   "pk": 22,
   "fields": {
     "question": 6,
-    "answer_text": "wrong1"
+    "answer_text": "172"
   }
 },
 {
@@ -288,7 +299,7 @@
   "pk": 23,
   "fields": {
     "question": 6,
-    "answer_text": "wrong2"
+    "answer_text": "192"
   }
 },
 {
@@ -296,7 +307,7 @@
   "pk": 24,
   "fields": {
     "question": 6,
-    "answer_text": "wrong3"
+    "answer_text": "207"
   }
 },
 {
@@ -304,7 +315,7 @@
   "pk": 25,
   "fields": {
     "question": 7,
-    "answer_text": "correct"
+    "answer_text": "+"
   }
 },
 {
@@ -312,7 +323,7 @@
   "pk": 26,
   "fields": {
     "question": 7,
-    "answer_text": "wrong1"
+    "answer_text": "-"
   }
 },
 {
@@ -320,7 +331,7 @@
   "pk": 27,
   "fields": {
     "question": 7,
-    "answer_text": "wrong2"
+    "answer_text": "-"
   }
 },
 {
@@ -328,7 +339,7 @@
   "pk": 28,
   "fields": {
     "question": 7,
-    "answer_text": "wrong3"
+    "answer_text": "-"
   }
 },
 {
@@ -336,7 +347,7 @@
   "pk": 29,
   "fields": {
     "question": 8,
-    "answer_text": "correct"
+    "answer_text": "+"
   }
 },
 {
@@ -344,7 +355,7 @@
   "pk": 30,
   "fields": {
     "question": 8,
-    "answer_text": "wrong1"
+    "answer_text": "-"
   }
 },
 {
@@ -352,7 +363,7 @@
   "pk": 31,
   "fields": {
     "question": 8,
-    "answer_text": "wrong2"
+    "answer_text": "-"
   }
 },
 {
@@ -360,7 +371,7 @@
   "pk": 32,
   "fields": {
     "question": 8,
-    "answer_text": "wrong3"
+    "answer_text": "-"
   }
 },
 {
@@ -368,7 +379,7 @@
   "pk": 33,
   "fields": {
     "question": 9,
-    "answer_text": "correct"
+    "answer_text": "+"
   }
 },
 {
@@ -376,7 +387,7 @@
   "pk": 34,
   "fields": {
     "question": 9,
-    "answer_text": "wrong1"
+    "answer_text": "-"
   }
 },
 {
@@ -384,7 +395,7 @@
   "pk": 35,
   "fields": {
     "question": 9,
-    "answer_text": "wrong2"
+    "answer_text": "-"
   }
 },
 {
@@ -392,7 +403,7 @@
   "pk": 36,
   "fields": {
     "question": 9,
-    "answer_text": "wrong3"
+    "answer_text": "-"
   }
 },
 {
@@ -400,7 +411,7 @@
   "pk": 37,
   "fields": {
     "question": 10,
-    "answer_text": "correct"
+    "answer_text": "+"
   }
 },
 {
@@ -408,7 +419,7 @@
   "pk": 38,
   "fields": {
     "question": 10,
-    "answer_text": "wrong1"
+    "answer_text": "-"
   }
 },
 {
@@ -416,7 +427,7 @@
   "pk": 39,
   "fields": {
     "question": 10,
-    "answer_text": "wrong2"
+    "answer_text": "-"
   }
 },
 {
@@ -424,7 +435,186 @@
   "pk": 40,
   "fields": {
     "question": 10,
-    "answer_text": "wrong3"
+    "answer_text": "-"
+  }
+},
+{
+  "model": "tickets.answer",
+  "pk": 41,
+  "fields": {
+    "question": 11,
+    "answer_text": "+"
+  }
+},
+{
+  "model": "tickets.answer",
+  "pk": 42,
+  "fields": {
+    "question": 11,
+    "answer_text": "-"
+  }
+},
+{
+  "model": "tickets.answer",
+  "pk": 43,
+  "fields": {
+    "question": 11,
+    "answer_text": "-"
+  }
+},
+{
+  "model": "tickets.answer",
+  "pk": 44,
+  "fields": {
+    "question": 11,
+    "answer_text": "-"
+  }
+},
+{
+  "model": "tickets.ticketpassing",
+  "pk": 1,
+  "fields": {
+    "author": 2,
+    "ticket": 2,
+    "passed_at": "2020-12-07T19:01:30.570Z"
+  }
+},
+{
+  "model": "tickets.ticketpassing",
+  "pk": 2,
+  "fields": {
+    "author": 2,
+    "ticket": 2,
+    "passed_at": "2020-12-07T19:02:06.914Z"
+  }
+},
+{
+  "model": "tickets.ticketpassing",
+  "pk": 3,
+  "fields": {
+    "author": 2,
+    "ticket": 2,
+    "passed_at": "2020-12-07T19:02:20.246Z"
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 1,
+  "fields": {
+    "ticket_passing": 1,
+    "answer": 25
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 2,
+  "fields": {
+    "ticket_passing": 1,
+    "answer": 29
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 3,
+  "fields": {
+    "ticket_passing": 1,
+    "answer": 33
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 4,
+  "fields": {
+    "ticket_passing": 1,
+    "answer": 37
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 5,
+  "fields": {
+    "ticket_passing": 1,
+    "answer": 41
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 6,
+  "fields": {
+    "ticket_passing": 2,
+    "answer": 27
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 7,
+  "fields": {
+    "ticket_passing": 2,
+    "answer": 30
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 8,
+  "fields": {
+    "ticket_passing": 2,
+    "answer": 36
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 9,
+  "fields": {
+    "ticket_passing": 2,
+    "answer": 40
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 10,
+  "fields": {
+    "ticket_passing": 2,
+    "answer": 43
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 11,
+  "fields": {
+    "ticket_passing": 3,
+    "answer": 25
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 12,
+  "fields": {
+    "ticket_passing": 3,
+    "answer": 29
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 13,
+  "fields": {
+    "ticket_passing": 3,
+    "answer": 33
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 14,
+  "fields": {
+    "ticket_passing": 3,
+    "answer": 37
+  }
+},
+{
+  "model": "tickets.ticketpassinganswer",
+  "pk": 15,
+  "fields": {
+    "ticket_passing": 3,
+    "answer": 44
   }
 }
 ]
