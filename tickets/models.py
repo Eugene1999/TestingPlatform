@@ -23,7 +23,7 @@ class Ticket(models.Model):
         if len(p) > 0:
             return round(sum(p) / len(p), 1)
         else:
-            return 100
+            return 0
 
     def __str__(self):
         return self.name

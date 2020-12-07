@@ -49,8 +49,10 @@ def user_logout(request):
 def profile(request):
     user = User.objects.get(id=request.user.id)
     user_data = User.objects.filter(id=request.user.id).values(
-        'first_name', 'last_name', 'avatar', 'birth_date', 'bio')[0]
-    user_data['birth_date'] = user_data['birth_date'].strftime('%Y-%m-%d')
+        'first_name', 'last_name', 'avatar', 'birth_date', 'bio').first()
+
+    if user_data.get('birth_date'):
+        user_data['birth_date'] = user_data['birth_date'].strftime('%Y-%m-%d')
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=user)
